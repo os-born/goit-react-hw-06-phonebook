@@ -1,0 +1,18 @@
+.filterField__conteiner {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 245px;
+}
+
+.filterField__label {
+  width: 100px;
+  margin-bottom: 40px;
+}
+
+.filterField__input {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  display: block;
+}
