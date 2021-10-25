@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-03-phonebook",
+  "name": "goit-react-hw-02-phonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://os-born.github.io/goit-react-hw-03-phonebook",
+  "homepage": "https://os-born.github.io/goit-react-hw-04-hooks-phonebook",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -12,17 +12,16 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -43,12 +42,13 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^7.32.0",
     "husky": "^7.0.2",
-    "lint-staged": "^11.2.3",
+    "lint-staged": "^11.2.0",
     "prettier": "^2.4.1"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.js,jsx": "eslint --cache --fix",
+    "*.{js,jsx,sass,css,md}": "prettier --write"
   }
 }
