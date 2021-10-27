@@ -17,21 +17,17 @@ const App = () => {
         name,
         number,
       };
-      setContacts(prevState => {
-        contacts = [...prevState, contact];
-      });
+      setContacts(prevState => [...prevState, contact]);
     } else {
       alert(`${name} is already in contacts`);
     }
   };
 
   const deleteContact = id =>
-    setContacts(prev => ({
-      contacts: prev.contacts.filter(contact => contact.id !== id),
-    }));
+    setContacts(prev => prev.filter(contact => contact.id !== id));
 
   const onChangeFilter = e => {
-    setFilter((filter = e.currentTarget.value));
+    setFilter(e.currentTarget.value);
   };
 
   const filteredContactsByInputValue = () => {
