@@ -5,26 +5,26 @@ import ContactList from './ContactList/ContactList';
 import FilterField from './FilterField/FilterField';
 
 const App = () => {
-  let [contacts, setContacts] = useState([]);
+  let [items, setItems] = useState([]);
   let [filter, setFilter] = useState('');
 
-  const addContact = (name, number) => {
-    const arrNames = contacts.map(contact => contact.name);
+  const addItem = (name, number) => {
+    const arrNames = items.map(item => item.name);
 
     if (!arrNames.includes(name)) {
-      const contact = {
+      const item = {
         id: uuidv4(),
         name,
         number,
       };
-      setContacts(prevState => [...prevState, contact]);
+      setItems(prevState => [...prevState, item]);
     } else {
       alert(`${name} is already in contacts`);
     }
   };
 
-  const deleteContact = id =>
-    setContacts(prev => prev.filter(contact => contact.id !== id));
+  const deleteItem = id =>
+    setItems(prev => prev.filter(item => item.id !== id));
 
   const onChangeFilter = e => {
     setFilter(e.currentTarget.value);
@@ -33,8 +33,8 @@ const App = () => {
   const filteredContactsByInputValue = () => {
     const normalizedInputValue = filter.toLowerCase().trim();
     if (normalizedInputValue !== '') {
-      return contacts.filter(contact =>
-        contact.name.toLowerCase().includes(normalizedInputValue),
+      return items.filter(item =>
+        item.name.toLowerCase().includes(normalizedInputValue),
       );
     }
   };
@@ -42,12 +42,12 @@ const App = () => {
   return (
     <>
       <h1>Phonebook</h1>
-      <ContactForm onSubmit={addContact} />
+      <ContactForm onSubmit={addItem} />
       <h2>Contacts</h2>
       <FilterField searchQuery={filter} onChange={onChangeFilter} />
       <ContactList
-        contacts={contacts}
-        onHandleDelete={deleteContact}
+        items={items}
+        onHandleDelete={deleteItem}
         filteredContactsByInputValue={filteredContactsByInputValue()}
       />
     </>

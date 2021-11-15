@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
 
 const ContactList = ({
-  contacts,
+  items,
   onHandleDelete,
   filteredContactsByInputValue,
 }) => {
@@ -26,7 +26,7 @@ const ContactList = ({
               </button>
             </li>
           ))
-        : contacts.map(({ id, name, number }) => (
+        : items.map(({ id, name, number }) => (
             <li key={id} className={s.contactList__item}>
               <p className={s.contactList__itemText}>
                 {name}: {number}
