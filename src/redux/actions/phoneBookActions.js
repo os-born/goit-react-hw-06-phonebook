@@ -1,22 +1,23 @@
+import { v4 as uuidv4 } from 'uuid';
 import {
   ADDCONTACT,
   DELETECONTACT,
   SETFILTERVALUE,
 } from '../constants/phoneBookConstants';
 
-const addContact = contact => ({
+const addContactAction = contact => ({
   type: ADDCONTACT,
-  payload: contact,
+  payload: { ...contact, id: uuidv4() },
 });
 
-const deleteContact = id => ({
+const deleteContactAction = id => ({
   type: DELETECONTACT,
   payload: id,
 });
 
-const getFilterValue = value => ({
+const getFilterValueAction = value => ({
   type: SETFILTERVALUE,
   payload: value,
 });
 
-export { addContact, deleteContact, getFilterValue };
+export { addContactAction, deleteContactAction, getFilterValueAction };

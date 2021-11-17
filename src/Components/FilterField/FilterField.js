@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './FilterField.module.css';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getFilterValueAction } from '../../redux/actions/phoneBookActions';
 
 const FilterField = ({ searchQuery, onChange }) => {
   return (
@@ -11,7 +13,7 @@ const FilterField = ({ searchQuery, onChange }) => {
           type="text"
           name="filter"
           value={searchQuery}
-          onChange={onChange}
+          onChange={e => onChange(e.target.value)}
           className={s.filterField__input}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           required
@@ -21,9 +23,17 @@ const FilterField = ({ searchQuery, onChange }) => {
   );
 };
 
+const mapStateToProps = state => ({
+  filter: state.contacts.filter,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onChange: value => dispatch(getFilterValueAction(value)),
+});
+
 FilterField.propTypes = {
-  searchQuery: PropTypes.string.isRequired,
+  // searchQuery: PropTypes.string.isRequired,
   onChange: PropTypes.func,
 };
 
-export default FilterField;
+export default connect(mapStateToProps, mapDispatchToProps)(FilterField);

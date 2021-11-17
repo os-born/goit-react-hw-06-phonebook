@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
+import { connect } from 'react-redux';
+import { deleteContactAction } from '../../redux/actions/phoneBookActions';
 
 const ContactList = ({
   items,
@@ -46,10 +48,20 @@ const ContactList = ({
   );
 };
 
+const mapStateToProps = state => ({
+  items: state.contacts.items,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onHandleDelete: id => {
+    dispatch(deleteContactAction(id));
+  },
+});
+
 ContactList.propTypes = {
   contacts: PropTypes.array,
   onHandleDelete: PropTypes.func,
   filteredContactsByInputValue: PropTypes.array,
 };
 
-export default ContactList;
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
