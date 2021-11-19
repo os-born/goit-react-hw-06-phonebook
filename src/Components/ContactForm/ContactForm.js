@@ -6,13 +6,19 @@ import { addContactAction } from '../../redux/actions/phoneBookActions';
 
 const initialContactState = { name: '', number: '' };
 
-const ContactForm = ({ addNewContact }) => {
+const ContactForm = ({ allContacts, addNewContact }) => {
   const [contact, setContact] = useState(initialContactState);
 
   const onHandleSubmit = e => {
     e.preventDefault();
-    addNewContact(contact);
-    setContact(initialContactState);
+    const arrNames = allContacts.map(item => item.name);
+
+    if (arrNames.includes(contact.name)) {
+      alert(`${contact.name} is already in contacts`);
+    } else {
+      addNewContact(contact);
+      setContact(initialContactState);
+    }
   };
 
   const onHandleChange = e => {
@@ -53,24 +59,19 @@ const ContactForm = ({ addNewContact }) => {
     </form>
   );
 };
+
+const mapStateToProps = state => ({
+  allContacts: state.contacts.items,
+});
+
 const mapDispatchToProps = dispatch => ({
   addNewContact: contact => {
     dispatch(addContactAction(contact));
   },
 });
 
-// const mapDispatchToProps = (dispatch, state) => ({
-//   addNewContact: item => {
-//     console.log(item);
-//     const arrNames = state.contacts.items.map(item => item.name);
-
-//     arrNames.includes(item.name)
-//       ? alert(`${item.name} is already in contacts`)
-//       : dispatch(addContactAction(item));
-//   },
-// });
-
 ContactForm.propTypes = {
-  onSubmit: PropTypes.func,
+  allContacts: PropTypes.array,
+  addNewContact: PropTypes.func,
 };
-export default connect(null, mapDispatchToProps)(ContactForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

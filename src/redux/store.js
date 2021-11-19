@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import phoneBookReducer from './reducers/phoneBookReducer';
+import rootReducer from './rootReducer';
 
-export const store = createStore(phoneBookReducer, composeWithDevTools());
+export const store = createStore(rootReducer, composeWithDevTools());

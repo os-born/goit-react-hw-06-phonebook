@@ -5,40 +5,6 @@ import ContactList from './ContactList/ContactList';
 import FilterField from './FilterField/FilterField';
 
 const App = () => {
-  // let [items, setItems] = useState([]);
-  // let [filter, setFilter] = useState('');
-
-  // const addItem = ({name, number}) => {
-  //   const arrNames = items.map(item => item.name);
-
-  //   if (!arrNames.includes(name)) {
-  //     const item = {
-  //       id: uuidv4(),
-  //       name,
-  //       number,
-  //     };
-  //     setItems(prevState => [...prevState, item]);
-  //   } else {
-  //     alert(`${name} is already in contacts`);
-  //   }
-  // };
-
-  // const deleteItem = id =>
-  //   setItems(prev => prev.filter(item => item.id !== id));
-
-  // const onChangeFilter = e => {
-  //   setFilter(e.currentTarget.value);
-  // };
-
-  // const filteredContactsByInputValue = () => {
-  //   const normalizedInputValue = filter.toLowerCase().trim();
-  //   if (normalizedInputValue !== '') {
-  //     return items.filter(item =>
-  //       item.name.toLowerCase().includes(normalizedInputValue),
-  //     );
-  //   }
-  // };
-
   return (
     <>
       <h1>Phonebook</h1>

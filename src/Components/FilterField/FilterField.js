@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getFilterValueAction } from '../../redux/actions/phoneBookActions';
 
-const FilterField = ({ searchQuery, onChange }) => {
+const FilterField = ({ filter, onChange }) => {
   return (
     <div className={s.filterField__conteiner}>
       <label className={s.filterField__label}>
@@ -12,7 +12,7 @@ const FilterField = ({ searchQuery, onChange }) => {
         <input
           type="text"
           name="filter"
-          value={searchQuery}
+          value={filter}
           onChange={e => onChange(e.target.value)}
           className={s.filterField__input}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -32,7 +32,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 FilterField.propTypes = {
-  // searchQuery: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired,
   onChange: PropTypes.func,
 };
 
