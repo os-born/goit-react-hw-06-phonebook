@@ -14,7 +14,7 @@ const itemsReducer = createReducer([], {
   ],
 });
 const filterReducer = createReducer('', {
-  [actions.getFilterValueAction]: (state, { payload }) => payload,
+  [actions.getFilterValueAction]: (_, { payload }) => payload,
 });
 
 const phoneBookReducers = combineReducers({
