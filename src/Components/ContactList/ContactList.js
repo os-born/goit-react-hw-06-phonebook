@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
+// import { connect } from 'react-redux';
 import { connect } from 'react-redux';
 import { deleteContactAction } from '../../redux/actions/phoneBookActions';
 
